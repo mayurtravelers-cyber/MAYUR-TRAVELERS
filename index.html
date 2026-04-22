@@ -1,0 +1,106 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Car Trip Booking</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .booking {
+      background: #fafafa;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Car Trip Booking</h1>
+
+  <form id="bookingForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="text" id="pickup" placeholder="Pickup Location" required>
+    <input type="text" id="drop" placeholder="Drop Location" required>
+    <input type="date" id="date" required>
+
+    <select id="car">
+      <option>Sedan</option>
+      <option>SUV</option>
+      <option>Hatchback</option>
+      <option>Luxury</option>
+    </select>
+
+    <button type="submit">Book Now</button>
+  </form>
+
+  <div id="bookings">
+    <h2>Bookings</h2>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById("bookingForm");
+  const bookingsDiv = document.getElementById("bookings");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const pickup = document.getElementById("pickup").value;
+    const drop = document.getElementById("drop").value;
+    const date = document.getElementById("date").value;
+    const car = document.getElementById("car").value;
+
+    const bookingHTML = `
+      <div class="booking">
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>From:</strong> ${pickup}</p>
+        <p><strong>To:</strong> ${drop}</p>
+        <p><strong>Date:</strong> ${date}</p>
+        <p><strong>Car:</strong> ${car}</p>
+      </div>
+    `;
+
+    bookingsDiv.innerHTML += bookingHTML;
+
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
+```
