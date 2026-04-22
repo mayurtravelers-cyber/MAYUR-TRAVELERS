@@ -1,0 +1,128 @@
+```html id="nqz8sk"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MAYUR TRAVELER - Book Your Ride</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #eef2f7;
+      margin: 0;
+    }
+
+    .header {
+      background: #1e3a8a;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: #1e3a8a;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #162d6a;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f8fafc;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="header">
+  🚗 MAYUR TRAVELER
+</div>
+
+<div class="container">
+  <h2>Book Your Trip</h2>
+
+  <form id="bookingForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+
+    <input type="text" id="pickup" placeholder="Pickup Location" required>
+    <input type="text" id="drop" placeholder="Drop Location" required>
+
+    <input type="number" id="km" placeholder="Distance (KM)" required>
+
+    <input type="date" id="date" required>
+
+    <select id="car">
+      <option value="10">Sedan (₹10/km)</option>
+      <option value="15">SUV (₹15/km)</option>
+      <option value="8">Hatchback (₹8/km)</option>
+      <option value="25">Luxury (₹25/km)</option>
+    </select>
+
+    <button type="submit">Calculate & Book</button>
+  </form>
+
+  <div id="output"></div>
+</div>
+
+<script>
+  const form = document.getElementById("bookingForm");
+  const output = document.getElementById("output");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const pickup = document.getElementById("pickup").value;
+    const drop = document.getElementById("drop").value;
+    const km = document.getElementById("km").value;
+    const date = document.getElementById("date").value;
+    const carRate = document.getElementById("car").value;
+    const carType = document.getElementById("car").selectedOptions[0].text;
+
+    const total = km * carRate;
+
+    output.innerHTML = `
+      <div class="result">
+        <h3>Booking Confirmed ✅</h3>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Route:</strong> ${pickup} → ${drop}</p>
+        <p><strong>Date:</strong> ${date}</p>
+        <p><strong>Car:</strong> ${carType}</p>
+        <p><strong>Distance:</strong> ${km} KM</p>
+        <h3>Total Price: ₹${total}</h3>
+      </div>
+    `;
+
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
+```
